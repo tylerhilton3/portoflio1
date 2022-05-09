@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Main {
+	public static ArrayList<Integer> sortOdd (ArrayList<Integer> input) {
+		
+		ArrayList<Integer> odds = new ArrayList<>();
+		
+		for (int element: input) {
+			if (element % 2 != 0) {
+				odds.add(element);
+			}
+		}
+		
+		Collections.sort(odds);
+		
+		ArrayList<Integer> integrated = new ArrayList<>(input);
+		int i = 0;
+		int j = 0;
+		for (int element: input) {
+			if (element % 2 != 0) {
+				integrated.set(i, odds.get(j));
+				j++;
+			}
+			i++;
+		}
+		
+		return integrated;
+		
+	}
+	
+	public static void main(String[] args) {
+		ArrayList<Integer> source = new ArrayList<>();
+		System.out.println("Place values below, say \"666\" to end");
+		Scanner sc = new Scanner(System.in);
+		int newIn;
+		do {
+			System.out.print("Next value: ");
+			newIn = sc.nextInt();
+			source.add(newIn);
+		} while (newIn != 666);
+		
+		System.out.println(sortOdd(source));
+	}
+}
