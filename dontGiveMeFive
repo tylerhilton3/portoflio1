@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+public class Main {
+	public static int dontGiveMeFive(int start, int end) {
+		
+		ArrayList<Integer> list = new ArrayList<>();
+		int i = start;
+		while (i <= end) {
+			if (i != 5) {
+				list.add(i);
+			}
+			i++;
+		}
+		
+		return list.size();
+	}
+	
+	
+	public static void main(String[] args) {
+		System.out.println(dontGiveMeFive(7,15));
+		
+	}
+		
+	
+}
