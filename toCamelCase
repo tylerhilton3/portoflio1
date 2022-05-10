@@ -1,0 +1,30 @@
+import java.text.CharacterIterator;
+import java.text.StringCharacterIterator;
+
+public class Main {
+	public static String toCamelCase (String input) {
+		
+		input.toLowerCase();
+		 
+        CharacterIterator it = new StringCharacterIterator(input);
+        StringBuilder str = new StringBuilder(input);
+        
+        while (it.current() != CharacterIterator.DONE) {
+            if (it.current() == '-') {
+            	it.next();
+            	str.append(Character.toUpperCase(it.current()));
+            	it.next();
+            } else {
+            	str.append(it.current());
+            	it.next();
+            }
+        }
+        
+        str.replace(0, input.length(), "");
+		return str.toString();
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(toCamelCase("my-third-project"));
+	}
+}
