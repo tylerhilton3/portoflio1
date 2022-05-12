@@ -1,0 +1,31 @@
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+public class Main {
+	public static void main(String[] args) throws AWTException, IOException, InterruptedException {
+		
+		TimeUnit.SECONDS.sleep(5);
+		Robot robot = new Robot();
+		
+		for (int i = 0 ; i <10000 ; i++) {
+			for (int x = 0; x < 4 - (String.valueOf(i)).length();x++) {
+				robot.keyPress(KeyEvent.VK_0);
+				robot.keyRelease(KeyEvent.VK_0);
+			}
+			
+			for (int ii: String.valueOf(i).toCharArray()) {
+				robot.keyPress(ii + 48);
+				robot.keyRelease(ii + 48);
+			}
+			
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			
+			TimeUnit.MILLISECONDS.sleep(750);
+			
+		}
+	}
+}
