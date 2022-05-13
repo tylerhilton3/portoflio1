@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+	
+	public static int multiplicativePersistence(int fard) {
+		
+		int persistence = 0;
+		int product = 1;
+		int temp = fard; //28
+		
+		while (String.valueOf(temp).length() != 1) {
+			for (int x: String.valueOf(temp).toCharArray()) {
+				product = product * (x -48);
+			}
+			temp = product;
+			product = 1;
+			persistence++;
+		}
+		
+		return persistence;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter your number: ");
+		System.out.println("The multiplicative persistence of that number is " + multiplicativePersistence(sc.nextInt()));
+		
+	}
+}
